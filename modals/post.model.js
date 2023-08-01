@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const GigSchema = new Schema(
+const postSchema = new Schema(
   {
     userId: {
       type: String,
@@ -15,14 +15,6 @@ const GigSchema = new Schema(
       type: String,
       required: true,
     },
-    totalStars: {
-      type: Number,
-      default: 0,
-    },
-    starNumber: {
-      type: Number,
-      default: 0,
-    },
     cat: {
       type: String,
       required: true,
@@ -31,24 +23,8 @@ const GigSchema = new Schema(
       type: Number,
       required: true,
     },
-    cover: {
-      type: String,
-      required: true,
-    },
     images: {
       type: [String],
-      required: false,
-    },
-    userId: {
-      type: String,
-      required: true,
-    },
-    shortTitle: {
-      type: String,
-      required: true,
-    },
-    shortDesc: {
-      type: String,
       required: true,
     },
     deliveryTime: {
@@ -57,10 +33,10 @@ const GigSchema = new Schema(
     },
     revisionNumber: {
       type: Number,
-      required: true,
+      required: false,
     },
     features: {
-      type: [String],
+      type: String,
       required: false,
     },
     sales: {
@@ -73,4 +49,4 @@ const GigSchema = new Schema(
   }
 );
 
-export default mongoose.model("Gig", GigSchema);
+export default mongoose.model("post", postSchema);

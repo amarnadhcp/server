@@ -39,6 +39,10 @@ const userSchema = new Schema({
     type: Boolean,
     default:false
   },
+  status:{
+    type:Boolean,
+    default:true
+  }
 },{
   timestamps:true
 });

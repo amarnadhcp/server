@@ -2,10 +2,12 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors"
+import bodyParser from 'body-parser';
 import cookieParser from "cookie-parser"
 import userRoute from "./routes/user.route.js";
 import authRoute from "./routes/auth.route.js"
 import adminRoute from "./routes/admin.route.js"
+import sellerRoute  from "./routes/seller.route.js"
 
 
 const app = express();
@@ -23,11 +25,13 @@ const connect = async () => {
 
 app.use(cors({origin:"http://localhost:5173",methods: ["GET", "POST"],credentials:true} ));
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser())
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
-// app.use("/api/gigs", gigRoute);
+app.use("/api/freelancer",sellerRoute);
 app.use("/admin",adminRoute)
 
 //err middleware

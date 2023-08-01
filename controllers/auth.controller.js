@@ -127,9 +127,10 @@ export const UserGoogleLogin = async (req, res) => {
     if (exists) {
       const access = await bcrypt.compare(id, exists.password);
       if (access) {
-        const token = jwt.sign({ userId: access._id }, process.env.JWT_KEY, {
+        const token = jwt.sign({ userId: exists._id }, process.env.JWT_KEY, {
           expiresIn: 600000,
          });
+        
         return res.status(200).json({user:exists,token: token, message: "login Successfull",status:true, });
       } else {
         return res.status(404) .json({ alert: "Email or Password is wrong", status: false });
